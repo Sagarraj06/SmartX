@@ -1,4 +1,7 @@
 const mongoose = require("mongoose");
+const { sendMail } = require("../utils/sendMail");
+const { otpEmailTemplate } = require("../Templates/OtpEmailTemplates");
+
 
 const otpSchema = new mongoose.Schema({
     otp:{
@@ -16,6 +19,15 @@ const otpSchema = new mongoose.Schema({
         expires:5*60,
     }
 });
+const sendOtp= async(email,otp)=>{
+    await sendMail(email,"For OTP verification",otpEmailTemplate(otp));
+}
+
+otpSchema.pre("save", async function(next){
+    await sendOtp(this.email,this.otp);
+    next();
+});
+
 
 module.exports = mongoose.model("OTP",otpSchema);
 
