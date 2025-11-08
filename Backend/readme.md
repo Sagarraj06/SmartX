@@ -9,3 +9,11 @@ day 3>
     7. create profile picture
     8. create entry in db
     9. return response
+
+day 4>
+    1. fetch data
+    2. validation
+    3. is email registered or not.
+    4. password verification.
+    5. Create Token
+    6. return response.

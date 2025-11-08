@@ -2,6 +2,8 @@ const OTP = require("../models/otp");
 const User = require("../models/user");
 const otpGenerator = require("otp-generator");
 const becrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const user = require("../models/user");
 
 
 
@@ -66,7 +68,6 @@ exports.createOpt = async(req,res)=>{
 
 
 // sign up
-
 exports.signUp = async(req,res)=>{
  try {
     const {firstName,lastName,email,password,confirmPassword,otp} = req.body;
@@ -150,4 +151,69 @@ return res.status(200).json({
     
  }
 
+}
+
+//login
+exports.login = async(req,res)=>{
+    try {
+        const {email,password}= req.body;
+        if(!email || !password){
+            return res.status(400).json({
+                success:false,
+                message:"Please fill all the input fields",
+            });
+        }
+        // check emial registered or not
+        const userDetails = await User.findOne({email:email});
+        if(!userDetails){
+            return res.status(400).json({ 
+                success:false,
+                message:"User not found, please signup",
+     });
+
+        }
+console.log(userDetails);
+const isMatched = await becrypt.compare(password,userDetails.password);
+if(isMatched){
+        const payload={
+            userId:userDetails._id,
+            userEmail:userDetails.email,
+        }
+
+
+    const token = jwt.sign(payload,process.env.JWT_SECRET_KEY,{
+        expiresIn:"2h"
+    });
+    // console.log(token);
+    const user1= userDetails.toObject();
+    user1.password=undefined;
+    user1.token= token;   
+    
+    
+    
+    return res.status(200).json({
+        success:true,
+        message:"Login successful",
+        userDetails:user1,
+    });
+}
+else{
+    return res.status(400).json({
+        success:false,
+        message:"Invalid credentials",
+    });
+}
+            
+
+
+       
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            success:false,
+            message:"Internal Server error",
+        });
+        
+    }
+    
 }
