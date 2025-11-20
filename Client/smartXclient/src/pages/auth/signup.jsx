@@ -1,12 +1,16 @@
 import React, { use, useEffect } from 'react'
 import LogoAnimation from '../../component/auth/logoAnimation.jsx'
-import { Typography , TextField, Button} from '@mui/material'
+import { Typography , TextField, Button, InputAdornment} from '@mui/material'
 import { useState } from 'react'
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useGSAP } from '@gsap/react';
 import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
+import { IoEyeSharp } from "react-icons/io5";
+import { BsEyeSlashFill } from "react-icons/bs";
+
+
 const Signup = () => {
   // const [firstName,setfirstName]= useState("");
   // const changeHandler = (e)=>{
@@ -23,6 +27,8 @@ const Signup = () => {
     email:""
   });
   const [loading,setLoading] = useState(false);
+  const [showPassword,setShowPassword]= useState(false);
+  const [showConfirmPassword,setShowConfirmPassword]= useState(false);
 
   const navigate = useNavigate();
   // console.log(formData)
@@ -139,7 +145,7 @@ useGSAP(()=>{
         className='iPf'
         required/>
 
-        <TextField type='password' 
+        <TextField type={showPassword ? "text" : "password"} 
         variant='filled'
         placeholder='Enter your Password ' 
         label="Password" 
@@ -148,9 +154,21 @@ useGSAP(()=>{
         onChange={changeHandler}
         name='password'
         className='iPf'
-        required/>
+        required
+        InputProps= {{
+          endAdornment:(
+            <InputAdornment position='end'>
+        {
+              showPassword ? <IoEyeSharp size={25} style={{cursor:"pointer"}} onClick={()=> setShowPassword(false)}/> :
+              <BsEyeSlashFill size={25} style={{cursor:"pointer"}} onClick={()=> setShowPassword(true)}/>
+        } 
+         </InputAdornment>
 
-        <TextField type='password' 
+          )
+        }}
+        />
+
+        <TextField type={showConfirmPassword ? "text" : "password"} 
         variant='filled'
         placeholder='Enter your Confirm Password ' 
         label=" Confirm Password" 
@@ -159,7 +177,18 @@ useGSAP(()=>{
         onChange={changeHandler}
         name='confirmPassword'
         className='iPf'
-        required/>
+        required
+        InputProps= {{
+          endAdornment:(
+            <InputAdornment position='end'>
+        {
+              showConfirmPassword ? <IoEyeSharp size={25} style={{cursor:"pointer"}} onClick={()=> setShowConfirmPassword(prev => !prev)}/> :
+              <BsEyeSlashFill size={25} style={{cursor:"pointer"}} onClick={()=> setShowConfirmPassword(prev => !prev)}/>
+        } 
+         </InputAdornment>
+
+          )
+        }}/>
 
 
         <div className='flex items-center'>
@@ -169,7 +198,9 @@ useGSAP(()=>{
       color="secondary" 
       type="submit" 
       className='iPf'
-      fullWidth>
+      fullWidth
+      disabled={loading}
+      >
         
          Sign Up
       </Button>
@@ -187,6 +218,9 @@ useGSAP(()=>{
 
 
       </div>
+
+          <div className='bg-purple-900 h-[100vh] w-0.5'></div>
+
       <div className='w-[50%] flex justify-center items-center '>
         <LogoAnimation/>
       </div>

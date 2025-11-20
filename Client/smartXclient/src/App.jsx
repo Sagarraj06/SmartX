@@ -12,6 +12,9 @@ const App = () => {
     {
       path:"/otp",element:<Otp/>
     },
+    {
+      path:"/login",element:<Login/>
+    }
   ])
 
 
