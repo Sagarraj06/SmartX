@@ -4,6 +4,8 @@ import Signup from './pages/auth/signup.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Otp from './pages/auth/Otp.jsx'
 import ForgotPassword from './pages/auth/ForgotPassword.jsx'
+import ResetPassOtpVerify from './pages/auth/ResetPassOtpVerify.jsx'
+import ResetPassword from './pages/ResetPassword.jsx'
 
 const App = () => {
   const router = createBrowserRouter([
@@ -19,6 +21,12 @@ const App = () => {
     },
     {
       path:"/ForgotPassword",element:<ForgotPassword/>
+    },
+    {
+      path:"/resetPassOtpVerify",element:<ResetPassOtpVerify/>
+    },
+    {
+      path:"/resetPassword",element:<ResetPassword/>
     }
   ])
 

@@ -8,10 +8,12 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router';
 
 const ForgotPassword = () => {
     const [email,setEmail]= React.useState('');
     const [loading,setLoading]= React.useState(false);
+    const navigate=useNavigate()
 
     useGSAP(()=>{
         const t1 = gsap.timeline();
@@ -39,11 +41,13 @@ const ForgotPassword = () => {
                 throw new Error(response?.data?.message || "Error occuring during sending otp for reset password");
             }
             toast.dismiss(tostId);
+            navigate('/resetPassOtpVerify',{state:email});
             toast.success(response?.data?.message || "OTP sent successfully to your email");
             setLoading(false);
             
         } catch (error) {
             toast.dismiss(tostId);
+            
             setLoading(false);
             toast.error(error?.response?.data?.message || error?.message || "Error occuring during sending otp for reset password");
         }
