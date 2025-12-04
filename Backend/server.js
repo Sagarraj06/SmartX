@@ -17,5 +17,6 @@ app.use("/api/v1",userRoute);
 dbConnect();
 
 app.listen(PORT,()=>{
-console.log(`Server is successfully running at port number ${PORT}`);
+console.log(`Servers is successfully running at port number ${PORT}`);
 });
+//
