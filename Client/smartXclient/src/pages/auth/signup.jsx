@@ -1,4 +1,4 @@
-import React, { use, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import LogoAnimation from '../../component/auth/logoAnimation.jsx'
 import { Typography , TextField, Button, InputAdornment} from '@mui/material'
 import { useState } from 'react'
@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { IoEyeSharp } from "react-icons/io5";
 import { BsEyeSlashFill } from "react-icons/bs";
+
 
 
 const Signup = () => {
@@ -200,6 +201,7 @@ useGSAP(()=>{
       className='iPf'
       fullWidth
       disabled={loading}
+      sx={{textTransform:"none"}}
       >
         
          Sign Up
@@ -212,7 +214,7 @@ useGSAP(()=>{
 
       </form>
 
-      <p className='text-black justify-center mt-8 flex gap -2 text -[16px]  iPf'> Already have an account ? <span className='text-purple-700 ml-2'> Sign In</span></p>
+      <p className='text-black justify-center mt-8 flex gap -2 text -[16px]  iPf'> Already have an account ? <span className='text-purple-700 ml-2 cursor-pointer' onClick={()=>{navigate("/login")}} > Sign In</span></p>
 
         </div>
 

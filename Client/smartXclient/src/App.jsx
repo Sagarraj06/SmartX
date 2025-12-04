@@ -3,6 +3,7 @@ import Login from './pages/auth/login.jsx'
 import Signup from './pages/auth/signup.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Otp from './pages/auth/Otp.jsx'
+import ForgotPassword from './pages/auth/ForgotPassword.jsx'
 
 const App = () => {
   const router = createBrowserRouter([
@@ -14,6 +15,10 @@ const App = () => {
     },
     {
       path:"/login",element:<Login/>
+
+    },
+    {
+      path:"/ForgotPassword",element:<ForgotPassword/>
     }
   ])
 
