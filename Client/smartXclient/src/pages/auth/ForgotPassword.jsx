@@ -83,7 +83,7 @@ const ForgotPassword = () => {
             }}
             />
          <div className='flex items-center'>
-               <Button variant="contained" size='large' className='formItem' type="submit"  disabled={loading} fullWidth color="secondary">
+               <Button variant="contained" size='large' className='formItem' type="submit" sx={{textTransform:"none"}} disabled={loading} fullWidth color="secondary">
                 Submit
                 </Button>
             
