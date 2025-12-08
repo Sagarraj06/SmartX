@@ -6,11 +6,16 @@ import Otp from './pages/auth/Otp.jsx'
 import ForgotPassword from './pages/auth/ForgotPassword.jsx'
 import ResetPassOtpVerify from './pages/auth/ResetPassOtpVerify.jsx'
 import ResetPassword from './pages/auth/ResetPassword.jsx'
+import Navbar from './component/Common/Navbar.jsx'
+import Home from './pages/Home.jsx'
 
 const App = () => {
   const router = createBrowserRouter([
     {
-      path:"/",element:<Signup/>
+      path:"/",element:<><Navbar/><Home/></>
+    },
+    {
+      path:"/signup",element:<Signup/>
     },
     {
       path:"/otp",element:<Otp/>

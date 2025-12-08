@@ -153,7 +153,7 @@ const Login = () => {
               <p className='text-black mt-6 flex justify-center gap-2 text-[16px] inputAnimation'>
             Don't have an account?
              <span className='text-blue-600 cursor-pointer' 
-             onClick={()=>{navigate("/")}}>Sign Up</span>
+             onClick={()=>{navigate("/signup")}}>Sign Up</span>
               </p>
                 </div>
       </div>
