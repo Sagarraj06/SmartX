@@ -185,16 +185,16 @@ if(isMatched){
         expiresIn:"2h"
     });
     // console.log(token);
-    const user1= userDetails.toObject();
-    user1.password=undefined;
-    user1.token= token;   
+    userDetails.password=undefined;
+
     
     
     
     return res.status(200).json({
         success:true,
         message:"Login successful",
-        userDetails:user1,
+        userDetails:userDetails,
+        token:token,
     });
 }
 else{
