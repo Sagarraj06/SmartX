@@ -8,6 +8,7 @@ import ResetPassOtpVerify from './pages/auth/ResetPassOtpVerify.jsx'
 import ResetPassword from './pages/auth/ResetPassword.jsx'
 import Navbar from './component/Common/Navbar.jsx'
 import Home from './pages/Home.jsx'
+import {Toaster} from 'react-hot-toast';
 
 const App = () => {
   const router = createBrowserRouter([
@@ -15,23 +16,23 @@ const App = () => {
       path:"/",element:<><Navbar/><Home/></>
     },
     {
-      path:"/signup",element:<Signup/>
+      path:"/signup",element:<><Navbar/><Signup/></>
     },
     {
-      path:"/otp",element:<Otp/>
+      path:"/otp",element:<><Navbar/><Otp/></>
     },
     {
-      path:"/login",element:<Login/>
+      path:"/login",element:<><Navbar/><Login/></>
 
     },
     {
-      path:"/ForgotPassword",element:<ForgotPassword/>
+      path:"/ForgotPassword",element:<><Navbar/><ForgotPassword/></>
     },
     {
-      path:"/resetPassOtpVerify",element:<ResetPassOtpVerify/>
+      path:"/resetPassOtpVerify",element:<><Navbar/><ResetPassOtpVerify/></>
     },
     {
-      path:"/resetPassword",element:<ResetPassword/>
+      path:"/resetPassword",element:<><Navbar/><ResetPassword/></>
     }
   ])
 
@@ -46,6 +47,7 @@ const App = () => {
     <RouterProvider router={router}> 
     
     </RouterProvider>
+    <Toaster/>
   </div>
   )
 }

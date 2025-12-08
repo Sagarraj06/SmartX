@@ -163,7 +163,7 @@ const ResetPassword = () => {
 
 
 
-      <div className='w-[50%] flex items-center h-screen justify-center'>
+      <div className='w-[50%] flex items-center  justify-center'>
         <LogoAnimation/>
       </div>
       

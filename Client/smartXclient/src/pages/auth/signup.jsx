@@ -102,14 +102,14 @@ useGSAP(()=>{
 })
 
   return (
-    <div className='flex pl-8 py-6 overflow-'>
-      <div className='w-[50%] mt-2'>
-        <Typography variant="h3" sx={{fontWeight:600}} color="secondary">
+    <div className='flex px-24 overflow-y-hidden '>
+      <div className='w-[50%]'>
+        <Typography variant="h3" sx={{fontWeight:600, marginTop:2}} color="secondary">
           Signup Page
         </Typography>
         <p className='mt-2 text-purple-300 '> Fill the form below to create your account </p>
 
-        <div className='bg-white rounded-md w-[80%] p-4 mt-12 p-6 overflow-y-hidden fA1' >
+        <div className='bg-white rounded-md w-[80%] mt-6 p-3 overflow-y-hidden fA1' >
         <form className="flex flex-col gap-8  " onSubmit={submitHandler} >
 
         <TextField type='text' 
@@ -221,7 +221,7 @@ useGSAP(()=>{
 
       </div>
 
-          <div className='bg-purple-900 h-[100vh] w-0.5'></div>
+          <div className='bg-purple-900  w-0.5'></div>
 
       <div className='w-[50%] flex justify-center items-center '>
         <LogoAnimation/>

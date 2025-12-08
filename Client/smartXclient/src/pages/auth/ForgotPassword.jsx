@@ -102,7 +102,7 @@ const ForgotPassword = () => {
        </div>
 
        {/* // logo animation */}
-       <div className='w-[50%] h-[100vh] flex items-center justify-center -ml-14'>
+       <div className='w-[50%]  flex items-center justify-center -ml-14'>
         <LogoAnimation/>
        </div>
       

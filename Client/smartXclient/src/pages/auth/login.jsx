@@ -8,6 +8,10 @@ import { IoEyeSharp } from "react-icons/io5";
 import { BsFillEyeSlashFill } from "react-icons/bs";
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { setToken } from '../../redux/slices/auth.js';
+import { setUserData } from '../../redux/slices/userData.js';
+
 
 const Login = () => {
 
@@ -18,6 +22,8 @@ const Login = () => {
     email:"",
     password:"",
   })
+  const dispatch = useDispatch();
+  const navigation = useNavigate();
 
   useGSAP(()=>{
 
@@ -61,8 +67,12 @@ const Login = () => {
       if(!response?.data?.success){
         throw new Error("Error occur during login");
       }
+      // console.log(response.data);
 
       toast.dismiss(tostId);
+      dispatch(setToken(response?.data?.token));
+      dispatch(setUserData(response?.data?.userDetails));
+      navigate("/");
       toast.success(response?.data?.message);
       setLoading(false);
       
@@ -75,13 +85,13 @@ const Login = () => {
     }
   }
   return (
-    <div className='flex '>
+    <div className='flex px-24 overflow-y-hidden'>
 
-      <div className='w-[50%] px-24 py-6 overflow-y-hidden '>
-           <Typography variant="h3" sx={{fontWeight:600}} >
+      <div className='w-[50%]  '>
+           <Typography variant="h3" color="secondary" sx={{fontWeight:600, marginTop:10}} >
                  Welcome!
                </Typography>
-                <p className='text-[14px] mt-2'>Login to Smart<span className='text-yellow-400 font-semibold text-[16px]'>X</span> to continue to Smart<span className='text-yellow-400 font-semibold text-[16px]'>X</span></p>
+                <p className='text-[14px] text-purple-300 mt-2'>Login to <span className='text-white'>Smart</span><span className='text-yellow-400 font-semibold text-[16px]'>X</span> to continue to <span className='text-white' >Smart</span><span className='text-yellow-400 font-semibold text-[16px]'>X</span></p>
 
 
 
@@ -95,6 +105,7 @@ const Login = () => {
                     label="Email" 
                    fullWidth
                     required
+                    color="secondary"
                     className='inputAnimation'
                     name="email"
                     onChange={onChangeHandler}
@@ -111,6 +122,7 @@ const Login = () => {
                     label="Password"
                     required
                     fullWidth
+                    color="secondary"
                     onChange={onChangeHandler}
                     className='inputAnimation'
                     InputProps={{
@@ -126,7 +138,7 @@ const Login = () => {
                       )
                     }}
                     />
-                    <Link to={"/ForgotPassword"} className=' inputAnimation text-[14px] text-blue-600 self-end'>
+                    <Link to={"/ForgotPassword"} className=' inputAnimation text-[14px] text-purple-600 self-end'>
                     Forgot password?
                     </Link>
                  </div>
@@ -137,6 +149,7 @@ const Login = () => {
                      size="large"
                      fullWidth
                      type="submit"
+                     color="secondary"
                      className='inputAnimation'
                      sx={{textTransform:"none"}}
                      disabled={loading}
@@ -152,7 +165,7 @@ const Login = () => {
 
               <p className='text-black mt-6 flex justify-center gap-2 text-[16px] inputAnimation'>
             Don't have an account?
-             <span className='text-blue-600 cursor-pointer' 
+             <span className='text-purple-600 cursor-pointer' 
              onClick={()=>{navigate("/signup")}}>Sign Up</span>
               </p>
                 </div>
@@ -160,7 +173,7 @@ const Login = () => {
 
 
         {/* logo animation  */}
-      <div className='w-[50%] h-[100vh] flex items-center justify-center -ml-14'>
+      <div className='w-[50%]  flex items-center justify-center mt-32'>
         <LogoAnimation/>
       </div>
 

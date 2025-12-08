@@ -88,7 +88,7 @@ const ResetPassOtpVerify = () => {
 
         {//OTP JSX code
         }
-         <div className='flex justify-center items-center h-[100vh] w-[50%] ml-10 otpAnimation'>
+         <div className='flex justify-center items-center h-[calc(100vh-80px)] w-[50%] ml-10 otpAnimation'>
         <div className='flex justify-center items-center flex-col gap-1'>
         <h2 className='font-semibold font-2xl'>We sent you a code</h2> 
         <p>Please enter it below to verify your email</p> 
@@ -130,7 +130,7 @@ const ResetPassOtpVerify = () => {
     </div>
     </div>
 
-    <div className='bg-purple-900 h-[100vh] w-0.5'></div>
+    <div className='bg-purple-900  w-0.5'></div>
      {// LogoAnimation 
      }
 
