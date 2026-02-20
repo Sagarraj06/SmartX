@@ -7,8 +7,8 @@ const userSchema = new mongoose.Schema({
         trim:true,
     },
     lastName:{
-        type:String,
-        require:true,
+     type:String,
+        required:true,
         trim:true,
     },
     email:{
@@ -22,7 +22,13 @@ const userSchema = new mongoose.Schema({
     },
     profilePicture:{
         type:String,
+        required:true,
     },
+    isDefaulter:{
+        type:Number,
+        default:0,
+        required:true,
+    }
 },{timestamps:true});
 
 module.exports = mongoose.model("User",userSchema);
